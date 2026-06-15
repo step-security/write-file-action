@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Overwrite file
+        uses: ./
+        with:
+          path: ci/test-output/out.js
+          write-mode: overwrite
+          contents: |
+            console.log('some contents: ${{github.ref_name}}')
+
