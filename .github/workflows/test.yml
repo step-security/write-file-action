@@ -2,29 +2,22 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Overwrite file
-        uses: "DamianReeves/write-file-action@master"
+        uses: ./
         with:
           path: ci/test-output/out.js
           write-mode: overwrite
           contents: |
             console.log('some contents: ${{github.ref_name}}')
-            
-      - name: Commit & Push
-        uses: Andro999b/push@v1.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
-          force: true
-          message: 'Overwritten by Github Actions - ${date}'
+

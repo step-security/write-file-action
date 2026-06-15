@@ -35,7 +35,7 @@ Returns the file size.
 ## Example usage
 
 ```yaml
-uses: DamianReeves/write-file-action@master
+uses: step-security/write-file-action@v1
 with:
   path: ${{ env.home}}/.bashrc
   contents: |
@@ -57,10 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Overwrite file
-        uses: "DamianReeves/write-file-action@master"
+        uses: "step-security/write-file-action@v1"
         with:
           path: path/to/file.js
           write-mode: overwrite
@@ -68,7 +68,7 @@ jobs:
             console.log('some contents')
             
       - name: Commit & Push
-        uses: Andro999b/push@v1.3
+        uses: Andro999b/push@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main

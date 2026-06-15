@@ -11,8 +11,18 @@ on:
         description: "Specify a base branch"
         required: false
         default: "main"
+      node_version:
+        description: "Node.js version to use"
+        required: false
+        default: "24"
   schedule:
     - cron: "0 0 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read
+  issues: write
 
 jobs:
   audit-fix:
@@ -20,9 +30,4 @@ jobs:
     with:
       force: ${{ inputs.force || false }}
       base_branch: ${{ inputs.base_branch || 'main' }}
-
-permissions:
-  contents: write
-  pull-requests: write
-  packages: read
-  issues: write
+      node_version: ${{ inputs.node_version || '24' }}
