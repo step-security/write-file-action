@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/step-security/write-file-action#readme",
   "dependencies": {
-    "@actions/core": "^2.0.0",
+    "@actions/core": "^3.0.1",
     "@actions/io": "^2.0.0",
     "axios": "^1.17.0"
   },
